@@ -12,8 +12,7 @@ function App({ initialData }) {
         <div>
             <AppHeader />
             <SearchPanel />
-            <TodoList
-                todos={initialData} />
+            <TodoList todos={initialData} />
         </div>
     );
 }
