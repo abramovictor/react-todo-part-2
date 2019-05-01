@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 
-import TodoListItem from '../todo-list-item/todo-list-item';
-import Button from '../button/button';
+import TodoListItem from '../todo-list-item';
+import Button from '../button';
 
 
 import './todo-list.css';
