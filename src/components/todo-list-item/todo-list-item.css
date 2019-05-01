@@ -2,6 +2,14 @@
     cursor: pointer;
 }
 
+.todo-list-item--important {
+    font-weight: 700;
+}
+
+.todo-list-item--done {
+    text-decoration: line-through;
+}
+
 .todo-list-item--icon {
     width: 15px;
     height: 15px;
