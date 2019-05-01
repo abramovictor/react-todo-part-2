@@ -1,0 +1,8 @@
+.todo-list-item {
+    cursor: pointer;
+}
+
+.todo-list-item--icon {
+    width: 15px;
+    height: 15px;
+}
