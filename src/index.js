@@ -7,13 +7,14 @@ import TodoList from './components/todo-list/todo-list';
 
 import todoData from './data/todo-list';
 
+// import 'bootstrap/dist/css/bootstrap.css';
 import './styles/bootstrap.css';
 import './styles/styles.css';
 
 function App({ initialData }) {
     return (
         <div className="card shadow">
-            <AppHeader />
+            <AppHeader todos={initialData} />
             <SearchPanel />
             <TodoList todos={initialData} />
         </div>

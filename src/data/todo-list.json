@@ -1,17 +1,17 @@
 [
   {
     "label": "Learn JavaScript",
-    "completed": true,
+    "done": true,
     "important": false
   },
   {
     "label": "Learn React",
-    "completed": false,
+    "done": false,
     "important": true
   },
   {
     "label": "Learn Node.js",
-    "completed": false,
+    "done": false,
     "important": false
   }
 ]
