@@ -8,7 +8,7 @@ export default function TodoList({ todos, onDeleteTodo, onToggleImportantTodo, o
         <footer className="card-footer">
             <ul className="list-group">
                 {todos.map(({ id, ...todoProps }) =>
-                    <li className="todo-list list-group-item shadow-sm" key={id}>
+                    <li className="todo-list list-group-item p-0 my-1 shadow-sm" key={id}>
                         <TodoListItem
                             onToggleDone={() => onToggleDoneTodo(id)}
                             onToggleImportant={() => onToggleImportantTodo(id)}

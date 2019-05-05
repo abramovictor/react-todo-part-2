@@ -1,4 +1,4 @@
-.todo-list-item {
+.todo-list-item--label {
     cursor: pointer;
 }
 
@@ -14,4 +14,13 @@
     width: 15px;
     height: 15px;
     line-height: 1;
+    opacity: .25;
+    transition: opacity 1s, filter 1s;
+    filter: grayscale(1);
+}
+
+.todo-list-item:hover .todo-list-item--icon {
+    transition-duration: 0.3s;
+    filter: grayscale(0);
+    opacity: 1;
 }

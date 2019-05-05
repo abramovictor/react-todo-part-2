@@ -6,9 +6,9 @@ import './todo-list-item.css';
 
 export default function TodoListItem({ label, important, done, onDelete, onToggleImportant, onToggleDone }) {
     return (
-        <div className="d-flex align-items-center">
+        <div className="todo-list-item d-flex align-items-start p-3">
             <span
-                className={classNames('todo-list-item d-flex align-items-center', {
+                className={classNames('todo-list-item--label d-flex align-items-start', {
                     'text-warning todo-list-item--important': important,
                     'todo-list-item--done': done
                 })}
