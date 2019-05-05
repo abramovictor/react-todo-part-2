@@ -20,7 +20,7 @@ export default class App extends Component {
         this.setState((state) => {
             const todos = state.todos.map((todo) => {
                 if (todo.id === id) {
-                    todo.done = !todo.done;
+                    return {...todo, done: !todo.done}
                 }
 
                 return todo;
@@ -34,7 +34,7 @@ export default class App extends Component {
         this.setState((state) => {
             const todos = state.todos.map((todo) => {
                 if (todo.id === id) {
-                    todo.important = !todo.important;
+                    return { ...todo, important: !todo.important }
                 }
 
                 return todo;
