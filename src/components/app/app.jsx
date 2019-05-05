@@ -16,6 +16,34 @@ export default class App extends Component {
         return this.maxId++;
     }
 
+    handleToggleDoneTodo = (id) => {
+        this.setState((state) => {
+            const todos = state.todos.map((todo) => {
+                if (todo.id === id) {
+                    todo.done = !todo.done;
+                }
+
+                return todo;
+            });
+
+            return { todos };
+        });
+    };
+
+    handleToggleImportantTodo = (id) => {
+        this.setState((state) => {
+            const todos = state.todos.map((todo) => {
+                if (todo.id === id) {
+                    todo.important = !todo.important;
+                }
+
+                return todo;
+            });
+
+            return { todos };
+        });
+    };
+
     handleDeleteTodo = (id) => {
         this.setState((state) => {
             const todos = state.todos.filter((todo) => (todo.id !== id) ? todo : null);
@@ -44,7 +72,9 @@ export default class App extends Component {
                 <AppHeader todos={todos} />
                 <SearchPanel />
                 <TodoList
-                    onDelete={this.handleDeleteTodo}
+                    onToggleDoneTodo={this.handleToggleDoneTodo}
+                    onToggleImportantTodo={this.handleToggleImportantTodo}
+                    onDeleteTodo={this.handleDeleteTodo}
                     todos={todos} />
                 <ItemAddForm
                     onAddTodo={this.handleAddTodo} />

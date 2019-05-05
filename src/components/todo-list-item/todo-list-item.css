@@ -13,4 +13,5 @@
 .todo-list-item--icon {
     width: 15px;
     height: 15px;
+    line-height: 1;
 }
