@@ -1,12 +1,22 @@
-import React from 'react';
-import ItemStatusFilter from '../item-status-filter';
+import React, { Component } from 'react';
 import Input from '../input';
 
-export default function SearchPanel() {
-    return (
-        <div className="card-body m-0 d-flex">
-            <Input placeholder="Search" />
-            <ItemStatusFilter />
-        </div>
-    );
+export default class SearchPanel extends Component {
+    state = {
+        term: ''
+    };
+
+    handleChange = ({ target: { value: term } }) => {
+        this.props.onSearchTodo(term);
+        this.setState({ term });
+    };
+
+    render() {
+        return (
+            <Input
+                value={this.state.term}
+                onChange={this.handleChange}
+                placeholder="Search" />
+        );
+    }
 }

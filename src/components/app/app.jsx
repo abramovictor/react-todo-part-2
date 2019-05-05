@@ -1,19 +1,61 @@
 import React, { Component } from 'react';
 import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
+import ItemStatusFilter from '../item-status-filter';
 import TodoList from '../todo-list';
 import ItemAddForm from '../item-add-form';
 
 export default class App extends Component {
     maxId = 100;
 
+    static status = {
+        ALL: 'all',
+        ACTIVE: 'active',
+        DONE: 'done'
+    };
+
     state = {
-        todos: this.props.initialData
+        todos: this.props.initialData,
+        term: '',
+        filter: App.status.ALL
     };
 
     get id() {
         return this.maxId++;
     }
+
+    handleFilterTodo = (filter) => {
+        this.setState({ filter });
+    };
+
+    filterTodo(arr, filter) {
+        switch (filter) {
+            case App.status.ALL:
+                return arr;
+            case App.status.ACTIVE:
+                return arr.filter((todo) => !todo.done);
+            case App.status.DONE:
+                return arr.filter((todo) => todo.done);
+            default:
+                return arr;
+        }
+    }
+
+    searchTodo(arr, label) {
+        if (label.length === 0) return arr;
+
+        return arr.filter((todo) => {
+            if (todo.label.toLowerCase().search(label.toLowerCase()) > -1) {
+                return todo;
+            }
+
+            return null;
+        });
+    }
+
+    handleSearchTodo = (term) => {
+        this.setState({ term });
+    };
 
     toggleTodosProperty(arr, id, propName) {
         return arr.map((todo) => {
@@ -60,17 +102,29 @@ export default class App extends Component {
     };
 
     render() {
-        const { todos } = this.state;
+        const { todos, term, filter } = this.state;
+        const visibleTodo = this.filterTodo(
+            this.searchTodo(todos, term),
+            filter
+        );
 
         return (
             <div className="card shadow">
-                <AppHeader todos={todos} />
-                <SearchPanel />
+                <AppHeader
+                    todos={todos} />
+                <div className="card-body m-0 d-flex">
+                    <SearchPanel
+                        onSearchTodo={this.handleSearchTodo} />
+                    <ItemStatusFilter
+                        onFilterTodo={this.handleFilterTodo}
+                        currentStatus={this.state.filter}
+                        status={App.status} />
+                </div>
                 <TodoList
                     onToggleDoneTodo={this.handleToggleDoneTodo}
                     onToggleImportantTodo={this.handleToggleImportantTodo}
                     onDeleteTodo={this.handleDeleteTodo}
-                    todos={todos} />
+                    todos={visibleTodo} />
                 <ItemAddForm
                     onAddTodo={this.handleAddTodo} />
             </div>
