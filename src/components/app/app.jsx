@@ -6,9 +6,15 @@ import TodoList from '../todo-list';
 import ItemAddForm from '../item-add-form';
 
 export default class App extends Component {
+    maxId = 100;
+
     state = {
         todos: this.props.initialData
     };
+
+    get id() {
+        return this.maxId++;
+    }
 
     handleDeleteTodo = (id) => {
         this.setState((state) => {
@@ -18,7 +24,16 @@ export default class App extends Component {
     };
 
     handleAddTodo = (label) => {
-        console.log(label);
+        const todo = {
+            label,
+            id: this.id,
+            important: false,
+            done: false
+        };
+
+        this.setState((state) => {
+            return { todos: [...state.todos, todo] }
+        });
     };
 
     render() {
@@ -31,7 +46,7 @@ export default class App extends Component {
                 <TodoList
                     onDelete={this.handleDeleteTodo}
                     todos={todos} />
-                <ItemAddForm 
+                <ItemAddForm
                     onAddTodo={this.handleAddTodo} />
             </div>
         );
