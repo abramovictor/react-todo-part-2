@@ -1,13 +1,12 @@
 import React from 'react';
 import ItemStatusFilter from '../item-status-filter';
+import Input from '../input';
 
-function SearchPanel() {
+export default function SearchPanel() {
     return (
         <div className="card-body m-0 d-flex">
-            <input className="form-control btn btn-outline-light" placeholder="search" />
+            <Input placeholder="Search" />
             <ItemStatusFilter />
         </div>
     );
 }
-
-export default SearchPanel;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../button';
 
-class ItemStatusFilter extends Component {
+export default class ItemStatusFilter extends Component {
     render() {
         return (
             <div className="btn-group">
@@ -18,5 +18,3 @@ class ItemStatusFilter extends Component {
         );
     }
 }
-
-export default ItemStatusFilter;

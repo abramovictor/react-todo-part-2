@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AppHeader({ todos }) {
+export default function AppHeader({ todos }) {
     let all = todos.length;
     let done = todos.filter(todo => todo.done ? todo : null).length;
     let more = all - done;
@@ -22,5 +22,3 @@ function AppHeader({ todos }) {
         </header>
     );
 }
-
-export default AppHeader;

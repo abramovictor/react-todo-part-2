@@ -3,7 +3,7 @@ import TodoListItem from '../todo-list-item';
 
 import './todo-list.css';
 
-function TodoList({ todos, onDeleteTodo, onToggleImportantTodo, onToggleDoneTodo }) {
+export default function TodoList({ todos, onDeleteTodo, onToggleImportantTodo, onToggleDoneTodo }) {
     return (
         <footer className="card-footer">
             <ul className="list-group">
@@ -20,5 +20,3 @@ function TodoList({ todos, onDeleteTodo, onToggleImportantTodo, onToggleDoneTodo
         </footer>
     );
 }
-
-export default TodoList;
