@@ -3,7 +3,7 @@ import TodoListItem from '../todo-list-item';
 
 import './todo-list.css';
 
-export default function TodoList({ todos, onDeleteTodo, onToggleImportantTodo, onToggleDoneTodo }) {
+export default function TodoList({ todos, edit, onDeleteTodo, onToggleImportantTodo, onToggleDoneTodo, handleLabelChange }) {
     return (
         <footer className="card-footer">
             <ul className="list-group">
@@ -13,6 +13,8 @@ export default function TodoList({ todos, onDeleteTodo, onToggleImportantTodo, o
                             onToggleDone={() => onToggleDoneTodo(id)}
                             onToggleImportant={() => onToggleImportantTodo(id)}
                             onDelete={() => onDeleteTodo(id)}
+                            edit={edit}
+
                             {...todoProps} />
                     </li>
                 )}

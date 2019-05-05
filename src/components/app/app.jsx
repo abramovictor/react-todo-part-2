@@ -17,12 +17,17 @@ export default class App extends Component {
     state = {
         todos: this.props.initialData,
         term: '',
-        filter: App.status.ALL
+        filter: App.status.ALL,
+        edit: false
     };
 
     get id() {
         return this.maxId++;
     }
+
+    handleLabelChange = (edit) => {
+        this.setState({ edit: !edit });
+    };
 
     handleFilterTodo = (filter) => {
         this.setState({ filter });
@@ -102,7 +107,7 @@ export default class App extends Component {
     };
 
     render() {
-        const { todos, term, filter } = this.state;
+        const { todos, term, filter, edit } = this.state;
         const visibleTodo = this.filterTodo(
             this.searchTodo(todos, term),
             filter
@@ -121,9 +126,11 @@ export default class App extends Component {
                         status={App.status} />
                 </div>
                 <TodoList
+                    onLabelChange={this.handleLabelChange}
                     onToggleDoneTodo={this.handleToggleDoneTodo}
                     onToggleImportantTodo={this.handleToggleImportantTodo}
                     onDeleteTodo={this.handleDeleteTodo}
+                    edit={edit}
                     todos={visibleTodo} />
                 <ItemAddForm
                     onAddTodo={this.handleAddTodo} />
