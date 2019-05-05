@@ -1,15 +1,18 @@
 [
   {
+    "id": 0,
     "label": "Learn JavaScript",
     "done": true,
     "important": false
   },
   {
+    "id": 1,
     "label": "Learn React",
     "done": false,
     "important": true
   },
   {
+    "id": 2,
     "label": "Learn Node.js",
     "done": false,
     "important": false
