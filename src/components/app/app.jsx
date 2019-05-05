@@ -16,30 +16,26 @@ export default class App extends Component {
         return this.maxId++;
     }
 
+    toggleTodosProperty(arr, id, propName) {
+        return arr.map((todo) => {
+            if (todo.id === id) {
+                return { ...todo, [propName]: !todo[propName] }
+            }
+
+            return todo;
+        });
+    }
+
     handleToggleDoneTodo = (id) => {
         this.setState((state) => {
-            const todos = state.todos.map((todo) => {
-                if (todo.id === id) {
-                    return {...todo, done: !todo.done}
-                }
-
-                return todo;
-            });
-
+            const todos = this.toggleTodosProperty(state.todos, id, 'done');
             return { todos };
         });
     };
 
     handleToggleImportantTodo = (id) => {
         this.setState((state) => {
-            const todos = state.todos.map((todo) => {
-                if (todo.id === id) {
-                    return { ...todo, important: !todo.important }
-                }
-
-                return todo;
-            });
-
+            const todos = this.toggleTodosProperty(state.todos, id, 'important');
             return { todos };
         });
     };
