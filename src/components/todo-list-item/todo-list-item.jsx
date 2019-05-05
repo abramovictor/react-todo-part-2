@@ -11,14 +11,14 @@ class TodoListItem extends Component {
     };
 
     handleLableClick = () => {
-        this.setState({
-            done: !this.state.done
+        this.setState(({ done }) => {
+            return { done: !done };
         });
     };
 
     handleImportantClick = () => {
-        this.setState({
-            important: !this.state.important
+        this.setState(({ important }) => {
+            return { important: !important };
         });
     };
 
