@@ -1,3 +1,44 @@
 .todo-list {
+    overflow: hidden;
+    position: relative;
+}
+
+.todo-list .list-group-item {
     min-height: 75px;
+}
+
+.todo-list--slide-enter {
+    transform: translateX(-100%);
+    width: 100%;
+    opacity: 0;
+}
+
+.todo-list--slide-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 300ms;
+}
+
+.todo-list--slide-leave {
+    transform: translateX(0);
+    position: absolute !important;
+    width: 100%;
+    opacity: 1;
+}
+
+.todo-list--slide-leave-active {
+    transform: translateX(100%);
+    position: absolute !important;
+    width: 100%;
+    opacity: 0;
+    transition: all 300ms;
+}
+
+.todo-list--slide-appear {
+    opacity: 0;
+}
+
+.todo-list--slide-appear-active {
+    opacity: 1;
+    transition: all 700ms;
 }
