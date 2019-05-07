@@ -18,15 +18,25 @@ export default class App extends Component {
         todos: this.props.initialData,
         term: '',
         filter: App.status.ALL,
-        edit: false
     };
 
     get id() {
         return this.maxId++;
     }
 
-    handleLabelChange = (edit) => {
-        this.setState({ edit: !edit });
+    handleLabelChange = (id, label) => {
+        console.log(label);
+
+        this.setState((state) => {
+            const todos = state.todos.map((todo) => {
+                if (todo.id === id) {
+                    return { ...todo, label }
+                }
+    
+                return todo;
+            });
+            return { todos };
+        });
     };
 
     handleFilterTodo = (filter) => {
@@ -107,7 +117,7 @@ export default class App extends Component {
     };
 
     render() {
-        const { todos, term, filter, edit } = this.state;
+        const { todos, term, filter } = this.state;
         const visibleTodo = this.filterTodo(
             this.searchTodo(todos, term),
             filter
@@ -130,7 +140,6 @@ export default class App extends Component {
                     onToggleDoneTodo={this.handleToggleDoneTodo}
                     onToggleImportantTodo={this.handleToggleImportantTodo}
                     onDeleteTodo={this.handleDeleteTodo}
-                    edit={edit}
                     todos={visibleTodo} />
                 <ItemAddForm
                     onAddTodo={this.handleAddTodo} />

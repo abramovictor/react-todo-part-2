@@ -2,10 +2,6 @@
     cursor: pointer;
 }
 
-.todo-list-item--important {
-    font-weight: 700;
-}
-
 .todo-list-item--done {
     text-decoration: line-through;
 }
@@ -14,12 +10,16 @@
     width: 15px;
     height: 15px;
     line-height: 1;
+
+}
+
+.todo-list-item--icon:not(.todo-list-item--icon_save) {
     opacity: .25;
     transition: opacity 1s, filter 1s;
     filter: grayscale(1);
 }
 
-.todo-list-item:hover .todo-list-item--icon {
+.todo-list-item:hover .todo-list-item--icon:not(.todo-list-item--icon_save) {
     transition-duration: 0.3s;
     filter: grayscale(0);
     opacity: 1;
