@@ -11,7 +11,8 @@ export default class App extends Component {
     static status = {
         ALL: 'all',
         ACTIVE: 'active',
-        DONE: 'done'
+        DONE: 'done',
+        IMPORTANT: 'important',
     };
 
     state = {
@@ -25,14 +26,12 @@ export default class App extends Component {
     }
 
     handleLabelChange = (id, label) => {
-        console.log(label);
-
         this.setState((state) => {
             const todos = state.todos.map((todo) => {
                 if (todo.id === id) {
                     return { ...todo, label }
                 }
-    
+
                 return todo;
             });
             return { todos };
@@ -51,6 +50,8 @@ export default class App extends Component {
                 return arr.filter((todo) => !todo.done);
             case App.status.DONE:
                 return arr.filter((todo) => todo.done);
+            case App.status.IMPORTANT:
+                return arr.filter((todo) => todo.important);
             default:
                 return arr;
         }
@@ -127,7 +128,7 @@ export default class App extends Component {
             <div className="card shadow">
                 <AppHeader
                     todos={todos} />
-                <div className="card-body m-0 d-flex">
+                <div className="card-header m-0 d-flex">
                     <SearchPanel
                         onSearchTodo={this.handleSearchTodo} />
                     <ItemStatusFilter
